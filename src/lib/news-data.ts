@@ -19,23 +19,27 @@ export interface NewsArticle {
 // Re-export the type for easy access elsewhere
 export type { NewsArticle as NewsArticleType };
 
-const articlesCollection = collection(db, 'newsArticles');
-
 /**
  * Fetches all news articles directly from Firestore.
  * It will not use any local or seed data.
  * @returns A promise that resolves to an array of news articles from Firestore.
  */
 export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
+  if (!db) {
+    console.error("Firestore is not initialized. Check your Firebase config.");
+    return [];
+  }
   try {
+    const articlesCollection = collection(db, 'newsArticles');
     const snapshot = await getDocs(articlesCollection);
     if (snapshot.empty) {
-      return []; // Return an empty array if there are no articles in Firestore
+      return [];
     }
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NewsArticle));
   } catch (error) {
     console.error("Error fetching news articles from Firestore:", error);
-    return []; // Return an empty array on error to prevent crashing
+    // On error, return an empty array to prevent crashing.
+    return [];
   }
 });
 
@@ -46,12 +50,16 @@ export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
  * @returns A promise that resolves to the news article or null if not found.
  */
 export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArticle | null> => {
+   if (!db) {
+    console.error("Firestore is not initialized. Check your Firebase config.");
+    return null;
+  }
   try {
+    const articlesCollection = collection(db, 'newsArticles');
     const q = query(articlesCollection, where("slug", "==", slug), limit(1));
     const snapshot = await getDocs(q);
 
     if (snapshot.empty) {
-      console.warn(`Article with slug "${slug}" not found in Firestore.`);
       return null;
     }
     
