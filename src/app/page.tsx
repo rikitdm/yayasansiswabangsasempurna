@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { NewsCard } from "@/components/news-card";
+import { generateImage } from "@/ai/flows/generate-image";
 
 const projects = [
   {
@@ -72,18 +73,22 @@ const newsArticles = [
 ];
 
 
-export default function Home() {
+export default async function Home() {
+
+  const { imageUrl } = await generateImage({prompt: 'A heartwarming, realistic photograph of a group of diverse Indonesian school children, smiling and hopeful. They are gathered in a simple, clean classroom setting, with sunlight streaming in. The focus is on their bright faces, capturing their potential and the positive impact of educational support. The style should be authentic and uplifting, suitable for a charity organization website.'});
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative w-full py-20 md:py-32 lg:py-40 bg-card">
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
         <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Volunteers working together"
+          src={imageUrl}
+          alt="Happy Indonesian children"
           fill
           className="object-cover -z-10"
-          data-ai-hint="volunteers smiling"
+          data-ai-hint="indonesian children"
+          priority
         />
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
