@@ -18,7 +18,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { submitGoodsDonationAction } from "@/app/actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { AlertCircle, CalendarIcon, CheckCircle2 } from "lucide-react";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 const initialState = {
   success: false,
@@ -38,9 +42,7 @@ function SubmitButton() {
 export function DonateGoodsDialog() {
   const [state, formAction] = useActionState(submitGoodsDonationAction, initialState);
   const [open, setOpen] = useState(false);
-
-  // We show a success message in the dialog instead of closing it automatically.
-  // The user can then close it manually.
+  const [date, setDate] = useState<Date>();
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -95,10 +97,32 @@ export function DonateGoodsDialog() {
                     <Label htmlFor="company" className="text-right">Company</Label>
                     <Input id="company" name="company" placeholder="Your company name (optional)" className="col-span-3" />
                 </div>
-
+                
+                <input type="hidden" name="pickupTime" value={date?.toISOString()} />
                 <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="pickupTime" className="text-right">Pick-up Time</Label>
-                    <Input id="pickupTime" name="pickupTime" placeholder="e.g., Weekdays 9am-5pm" className="col-span-3" />
+                    <Label htmlFor="pickupTime" className="text-right">Pick-up Date</Label>
+                     <Popover>
+                        <PopoverTrigger asChild>
+                            <Button
+                            variant={"outline"}
+                            className={cn(
+                                "col-span-3 justify-start text-left font-normal",
+                                !date && "text-muted-foreground"
+                            )}
+                            >
+                            <CalendarIcon className="mr-2 h-4 w-4" />
+                            {date ? format(date, "PPP") : <span>Pick a date</span>}
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0">
+                            <Calendar
+                                mode="single"
+                                selected={date}
+                                onSelect={setDate}
+                                initialFocus
+                            />
+                        </PopoverContent>
+                    </Popover>
                 </div>
                 {state.errors?.pickupTime && <p className="col-span-4 text-right text-sm font-medium text-destructive">{state.errors.pickupTime[0]}</p>}
 
