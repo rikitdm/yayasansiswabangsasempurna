@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/project-card";
 import { Newspaper, Building } from "lucide-react";
@@ -91,10 +92,10 @@ export default async function Home() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white font-headline">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-primary font-headline">
                 Connect Your Generosity with Need
               </h1>
-              <p className="mt-4 text-lg text-gray-200 md:text-xl">
+              <p className="mt-4 text-lg text-muted-foreground md:text-xl">
                 Join our community of donors and nonprofits to make a tangible impact on lives around the world.
               </p>
             </div>
