@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { NewsCard } from "@/components/news-card";
-import { newsArticles } from "@/lib/news-data";
+import { getNewsArticles } from "@/lib/news-data";
 
 const projects = [
   {
@@ -42,11 +42,10 @@ const projects = [
   },
 ];
 
-const homeNewsArticles = newsArticles.slice(0, 4);
-
 
 export default async function Home() {
   const imageUrl = "https://firebasestorage.googleapis.com/v0/b/yayasan-siswa-bangsa-sempurna.firebasestorage.app/o/Hero%20Image%2F4.png?alt=media&token=6b422c74-6d4c-4737-9fd1-63cc8f789cb6";
+  const homeNewsArticles = (await getNewsArticles()).slice(0, 4);
 
   return (
     <>

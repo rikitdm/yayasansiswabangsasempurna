@@ -1,5 +1,10 @@
 
+import { db } from './firebase';
+import { collection, getDocs, query, where, getDoc, doc } from 'firebase/firestore';
+import { cache } from 'react';
+
 export interface NewsArticle {
+  id?: string;
   slug: string;
   imageSrc: string;
   imageHint: string;
@@ -9,8 +14,13 @@ export interface NewsArticle {
   content: string;
 }
 
-export const newsArticles: NewsArticle[] = [
-  {
+// Re-export the type for easy access elsewhere
+export type { NewsArticle as NewsArticleType };
+
+// Mock data to seed Firestore with.
+// In a real app, your team would add this through the Firebase Console.
+const seedData: Omit<NewsArticle, 'id'>[] = [
+    {
     slug: "how-your-support-is-building-brighter-futures",
     imageSrc: "https://placehold.co/400x250.png",
     imageHint: "education children",
@@ -65,3 +75,45 @@ export const newsArticles: NewsArticle[] = [
     content: "Our Annual Charity Gala was a night to remember! We are thrilled to announce that we raised a record-breaking $500,000, all of which will go directly towards our educational and healthcare programs. We are immensely grateful to our sponsors, donors, and everyone who attended for their incredible generosity. Together, we are changing lives."
   },
 ];
+
+
+const articlesCollection = collection(db, 'newsArticles');
+
+// Helper to fetch all articles
+export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
+  try {
+    const snapshot = await getDocs(articlesCollection);
+    if (snapshot.empty) {
+        // In a real application, you might seed the database here.
+        // For now, we will just return the seed data if the collection is empty.
+        console.log("Firestore 'newsArticles' collection is empty. Returning seed data.");
+        return seedData.map((article, index) => ({...article, id: `seed-${index}`}));
+    }
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NewsArticle));
+  } catch (error) {
+    console.error("Error fetching news articles from Firestore:", error);
+    // Fallback to mock data if Firestore fails
+    return seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
+  }
+});
+
+// Helper to fetch a single article by its slug
+export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArticle | null> => {
+  try {
+     const q = query(articlesCollection, where("slug", "==", slug));
+     const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      console.log(`No article found with slug: ${slug}. Checking seed data.`);
+      const seededArticle = seedData.find(a => a.slug === slug);
+      return seededArticle ? { ...seededArticle, id: `seed-${slug}` } : null;
+    }
+
+    const doc = snapshot.docs[0];
+    return { id: doc.id, ...doc.data() } as NewsArticle;
+  } catch (error) {
+     console.error(`Error fetching article with slug ${slug}:`, error);
+     const seededArticle = seedData.find(a => a.slug === slug);
+     return seededArticle ? { ...seededArticle, id: `seed-fallback-${slug}` } : null;
+  }
+});

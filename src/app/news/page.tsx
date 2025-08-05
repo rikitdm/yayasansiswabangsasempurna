@@ -1,14 +1,16 @@
 
 import { Metadata } from "next";
 import { NewsCard } from "@/components/news-card";
-import { newsArticles } from "@/lib/news-data";
+import { getNewsArticles } from "@/lib/news-data";
 
 export const metadata: Metadata = {
   title: "News & Stories | Yayasan Siswa Bangsa Sempurna",
   description: "Read about the lives you've changed and the communities we've supported together.",
 };
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const newsArticles = await getNewsArticles();
+  
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24">
       <div className="mx-auto max-w-3xl text-center">

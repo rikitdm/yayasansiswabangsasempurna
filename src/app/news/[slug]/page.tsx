@@ -2,7 +2,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { newsArticles, NewsArticle } from "@/lib/news-data";
+import { getNewsArticleBySlug, getNewsArticles } from "@/lib/news-data";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = newsArticles.find((a) => a.slug === params.slug);
+  const article = await getNewsArticleBySlug(params.slug);
 
   if (!article) {
     return {
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ArticlePage({ params }: Props) {
-  const article = newsArticles.find((a) => a.slug === params.slug);
+export default async function ArticlePage({ params }: Props) {
+  const article = await getNewsArticleBySlug(params.slug);
 
   if (!article) {
     notFound();
@@ -58,7 +58,8 @@ export default function ArticlePage({ params }: Props) {
 }
 
 export async function generateStaticParams() {
-    return newsArticles.map((article) => ({
+    const articles = await getNewsArticles();
+    return articles.map((article) => ({
         slug: article.slug,
     }));
 }
