@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 const menuItems = [
   { label: "About Us", href: "/about" },
@@ -86,13 +86,16 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <div className="grid gap-4 p-4">
+            <SheetHeader className="border-b pb-4 mb-4">
+              <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
               <Link href="/" className="flex items-center gap-2" prefetch={false}>
                 <Mountain className="h-6 w-6 text-primary" />
                 <span className="text-xl font-bold text-primary font-headline">
                   Yayasan Siswa Bangsa Sempurna
                 </span>
               </Link>
+            </SheetHeader>
+            <div className="grid gap-4">
               <nav className="grid gap-2">
                 {menuItems.map((item) =>
                   item.dropdown ? (
