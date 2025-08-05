@@ -36,7 +36,7 @@ export function Header() {
         <Link href="#" className="flex items-center gap-2" prefetch={false}>
           <Mountain className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold text-primary font-headline">
-            Cause Connector
+            Yayasan Siswa Bangsa Sempurna
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -88,7 +88,7 @@ export function Header() {
               <Link href="#" className="flex items-center gap-2" prefetch={false}>
                 <Mountain className="h-6 w-6 text-primary" />
                 <span className="text-xl font-bold text-primary font-headline">
-                  Cause Connector
+                  Yayasan Siswa Bangsa Sempurna
                 </span>
               </Link>
               <nav className="grid gap-2">

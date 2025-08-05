@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "Cause Connector",
+  title: "Yayasan Siswa Bangsa Sempurna",
   description: "A platform connecting generosity with need.",
 };
 

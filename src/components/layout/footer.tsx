@@ -45,7 +45,7 @@ export function Footer() {
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
             <Mountain className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold text-primary font-headline">
-              Cause Connector
+              Yayasan Siswa Bangsa Sempurna
             </span>
           </Link>
           <p className="text-sm text-muted-foreground">
@@ -98,7 +98,7 @@ export function Footer() {
       <div className="border-t">
         <div className="container mx-auto flex items-center justify-between px-4 py-4 md:px-6">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Cause Connector. All rights reserved.
+            © {new Date().getFullYear()} Yayasan Siswa Bangsa Sempurna. All rights reserved.
           </p>
         </div>
       </div>
