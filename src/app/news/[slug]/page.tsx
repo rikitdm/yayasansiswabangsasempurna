@@ -68,7 +68,10 @@ export default async function ArticlePage({ params }: Props) {
 
 export async function generateStaticParams() {
     const articles = await getNewsArticles();
-    return articles.map((article) => ({
+    // Filter out any articles that don't have a slug to prevent build errors
+    return articles
+      .filter(article => !!article.slug) 
+      .map((article) => ({
         slug: article.slug,
-    }));
+      }));
 }
