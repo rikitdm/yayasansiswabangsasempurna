@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useState, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -36,13 +36,11 @@ function SubmitButton() {
 }
 
 export function DonateGoodsDialog() {
-  const [state, formAction] = useFormState(submitGoodsDonationAction, initialState);
+  const [state, formAction] = useActionState(submitGoodsDonationAction, initialState);
   const [open, setOpen] = useState(false);
 
-  // Close the dialog if the form was submitted successfully
-  if (state.success && open) {
-    // We don't close it automatically, we show a success message
-  }
+  // We show a success message in the dialog instead of closing it automatically.
+  // The user can then close it manually.
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
