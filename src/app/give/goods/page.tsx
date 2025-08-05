@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
+import { DonateGoodsDialog } from "@/components/donate-goods-dialog";
 
 export const metadata: Metadata = {
     title: "Donate Goods | Yayasan Siswa Bangsa Sempurna",
@@ -67,7 +68,7 @@ export default function DonateGoodsPage() {
                       According to the United for ALICE Report, 42% of households already struggled to make ends meet before the pandemic — and today low-wage workers are being priced out of affording the basics due to unprecedented inflation. Every time you donate goods, your organization has a direct impact on people who need it most, now.
                     </p>
                 </div>
-                <Button size="lg" className="mt-4 md:mt-0">Donate Goods</Button>
+                <DonateGoodsDialog />
             </div>
           
             <Card className="p-6 md:p-10 bg-card">
