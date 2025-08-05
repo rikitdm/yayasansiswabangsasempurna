@@ -21,8 +21,8 @@ const menuItems = [
   {
     label: "Ways to Give",
     dropdown: [
-      { label: "One-time Donation", href: "/give" },
-      { label: "Monthly Giving", href: "/give#monthly" },
+      { label: "Online Donation", href: "/give" },
+      { label: "Donate Goods", href: "/give/goods" },
       { label: "Corporate Matching", href: "/companies" },
     ],
   },
@@ -71,10 +71,12 @@ export function Header() {
           )}
         </nav>
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="ghost">Sign In</Button>
-          <Button className="bg-accent hover:bg-accent/90">
-            <HandHeart className="mr-2 h-4 w-4" /> Donate
-          </Button>
+          <Link href="/signup"><Button variant="ghost">Sign In</Button></Link>
+          <Link href="/give">
+            <Button className="bg-accent hover:bg-accent/90">
+                <HandHeart className="mr-2 h-4 w-4" /> Donate
+            </Button>
+          </Link>
         </div>
         <Sheet>
           <SheetTrigger asChild>
@@ -115,10 +117,12 @@ export function Header() {
                 )}
               </nav>
               <div className="mt-4 flex flex-col gap-2">
-                <Button variant="outline">Sign In</Button>
-                <Button className="bg-accent hover:bg-accent/90">
-                  <HandHeart className="mr-2 h-4 w-4" /> Donate
-                </Button>
+                 <Link href="/signup"><Button variant="outline">Sign In</Button></Link>
+                 <Link href="/give">
+                    <Button className="bg-accent hover:bg-accent/90 w-full">
+                    <HandHeart className="mr-2 h-4 w-4" /> Donate
+                    </Button>
+                </Link>
               </div>
             </div>
           </SheetContent>

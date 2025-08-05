@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us | Yayasan Siswa Bangsa Sempurna",
@@ -14,21 +15,25 @@ const differenceCards = [
         title: "Become a Supporter",
         description: "Whether you make a one-time donation or become a monthly donor, your generous gift can make a direct impact for an individual or family in need.",
         buttonText: "Learn More",
+        href: "/give",
     },
     {
         title: "Donate Goods",
         description: "When disaster strikes, be ready to help. We can work with your team to ensure your goods are used at the right time during recovery efforts and don't end up going to waste.",
         buttonText: "Learn More",
+        href: "/give/goods",
     },
     {
         title: "Join Our Team",
         description: "Contribute to our mission by helping our team sort, pack, and ship donated goods. Interested in careers? Search open positions.",
         buttonText: "Learn More",
+        href: "/help",
     },
     {
         title: "Become a Member",
         description: "By joining our nonprofit network, you can receive critically needed goods to help your community both pre-disaster and post-disaster.",
         buttonText: "Learn More",
+        href: "/signup",
     },
 ];
 
@@ -90,7 +95,9 @@ export default function AboutPage() {
                             <CardDescription>{card.description}</CardDescription>
                         </CardContent>
                         <CardContent>
-                             <Button variant="outline">{card.buttonText}</Button>
+                            <Link href={card.href}>
+                                <Button variant="outline">{card.buttonText}</Button>
+                            </Link>
                         </CardContent>
                     </Card>
                 ))}
