@@ -1,6 +1,6 @@
 
 import { db } from './firebase';
-import { collection, getDocs, query, where, getDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { cache } from 'react';
 
 export interface NewsArticle {
@@ -17,8 +17,7 @@ export interface NewsArticle {
 // Re-export the type for easy access elsewhere
 export type { NewsArticle as NewsArticleType };
 
-// Mock data to seed Firestore with.
-// In a real app, your team would add this through the Firebase Console.
+// Mock data to be used as a fallback if Firestore is empty or inaccessible.
 const seedData: Omit<NewsArticle, 'id'>[] = [
     {
     slug: "how-your-support-is-building-brighter-futures",
@@ -84,8 +83,7 @@ export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
   try {
     const snapshot = await getDocs(articlesCollection);
     if (snapshot.empty) {
-        // In a real application, you might seed the database here.
-        // For now, we will just return the seed data if the collection is empty.
+        // If the collection is empty, return the seed data so the page can still render.
         console.log("Firestore 'newsArticles' collection is empty. Returning seed data.");
         return seedData.map((article, index) => ({...article, id: `seed-${index}`}));
     }
@@ -93,6 +91,7 @@ export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
   } catch (error) {
     console.error("Error fetching news articles from Firestore:", error);
     // Fallback to mock data if Firestore fails
+    console.log("Falling back to seed data due to Firestore error.");
     return seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
   }
 });
@@ -104,7 +103,7 @@ export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArti
      const snapshot = await getDocs(q);
 
     if (snapshot.empty) {
-      console.log(`No article found with slug: ${slug}. Checking seed data.`);
+      console.log(`No article found in Firestore with slug: ${slug}. Checking seed data.`);
       const seededArticle = seedData.find(a => a.slug === slug);
       return seededArticle ? { ...seededArticle, id: `seed-${slug}` } : null;
     }
@@ -113,6 +112,7 @@ export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArti
     return { id: doc.id, ...doc.data() } as NewsArticle;
   } catch (error) {
      console.error(`Error fetching article with slug ${slug}:`, error);
+     console.log(`Falling back to seed data for slug: ${slug}`);
      const seededArticle = seedData.find(a => a.slug === slug);
      return seededArticle ? { ...seededArticle, id: `seed-fallback-${slug}` } : null;
   }
