@@ -80,33 +80,29 @@ const articlesCollection = collection(db, 'newsArticles');
 
 // Helper to fetch all articles
 export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
+  let articles: NewsArticle[] = [];
   try {
     const snapshot = await getDocs(articlesCollection);
-    // If there's at least one document, return it.
-    if (!snapshot.empty) {
-      return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NewsArticle));
+    if (snapshot.empty) {
+      console.log("Firestore 'newsArticles' collection is empty. Returning seed data.");
+      // If Firestore is empty, use the seed data.
+      articles = seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
+    } else {
+      // If Firestore has data, use only that data.
+      articles = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NewsArticle));
     }
-    // If firestore is empty, fall back to seed data.
-    console.log("Firestore 'newsArticles' collection is empty. Returning seed data.");
-    return seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
-
   } catch (error) {
     console.error("Error fetching news articles from Firestore:", error);
-    // Fallback to mock data if Firestore fails for other reasons (e.g., permissions)
+    // If there's an error connecting, fall back to seed data.
     console.log("Falling back to seed data due to Firestore error.");
-    return seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
+    articles = seedData.map((article, index) => ({...article, id: `seed-fallback-${index}`}));
   }
+  return articles;
 });
 
 // Helper to fetch a single article by its slug
 export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArticle | null> => {
-  try {
-    const allArticles = await getNewsArticles();
-    const article = allArticles.find(a => a.slug === slug);
-    return article || null;
-  } catch (error) {
-     console.error(`Error fetching article with slug ${slug}:`, error);
-     // In case of error, return null as we can't find the article.
-     return null;
-  }
+  const allArticles = await getNewsArticles();
+  const article = allArticles.find(a => a.slug === slug);
+  return article || null;
 });
