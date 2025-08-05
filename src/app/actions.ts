@@ -4,6 +4,7 @@
 import { z } from "zod";
 import { generateDonationImpactNarrative } from "@/ai/flows/generate-donation-impact-narrative";
 import { addGoodsDonation } from "@/lib/goods-donations-data";
+import { FirebaseError } from "firebase/app";
 
 export const generateImpactNarrativeAction = async (prevState: any, formData: FormData) => {
   const schema = z.object({
@@ -78,9 +79,19 @@ export const submitGoodsDonationAction = async (prevState: any, formData: FormDa
     }
   } catch (error) {
     console.error("Firestore Error:", error);
+    let errorMessage = "An unexpected error occurred. Please try again later.";
+    if (error instanceof FirebaseError) {
+        if (error.code === 'permission-denied') {
+            errorMessage = "Submission failed: Permission denied. Please check your Firestore security rules.";
+        } else {
+            errorMessage = `Submission failed with a database error: ${error.message}`;
+        }
+    } else if (error instanceof Error) {
+        errorMessage = error.message;
+    }
     return {
       success: false,
-      message: "An unexpected error occurred. Please try again later.",
+      message: errorMessage,
       errors: null,
     }
   }
