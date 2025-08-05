@@ -102,14 +102,16 @@ export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArti
      const q = query(articlesCollection, where("slug", "==", slug));
      const snapshot = await getDocs(q);
 
-    if (snapshot.empty) {
-      console.log(`No article found in Firestore with slug: ${slug}. Checking seed data.`);
-      const seededArticle = seedData.find(a => a.slug === slug);
-      return seededArticle ? { ...seededArticle, id: `seed-${slug}` } : null;
+    if (!snapshot.empty) {
+      const doc = snapshot.docs[0];
+      return { id: doc.id, ...doc.data() } as NewsArticle;
     }
+    
+    // If not found in Firestore, check the seed data as a fallback.
+    console.log(`No article found in Firestore with slug: ${slug}. Checking seed data.`);
+    const seededArticle = seedData.find(a => a.slug === slug);
+    return seededArticle ? { ...seededArticle, id: `seed-${slug}` } : null;
 
-    const doc = snapshot.docs[0];
-    return { id: doc.id, ...doc.data() } as NewsArticle;
   } catch (error) {
      console.error(`Error fetching article with slug ${slug}:`, error);
      console.log(`Falling back to seed data for slug: ${slug}`);
