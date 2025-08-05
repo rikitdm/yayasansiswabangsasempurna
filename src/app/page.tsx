@@ -11,7 +11,7 @@ const projects = [
     raised: 7500,
     goal: 10000,
     imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "children school",
+    imageHint: "children school supplies",
   },
   {
     title: "Disaster Relief: Hurricane Ian",
@@ -19,7 +19,7 @@ const projects = [
     raised: 120000,
     goal: 150000,
     imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "disaster relief",
+    imageHint: "hurricane disaster relief",
   },
   {
     title: "Community Health Clinics",
@@ -27,7 +27,7 @@ const projects = [
     raised: 45000,
     goal: 60000,
     imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "health clinic",
+    imageHint: "mobile health clinic",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function Home() {
           alt="Volunteers working together"
           fill
           className="object-cover -z-10"
-          data-ai-hint="community volunteering"
+          data-ai-hint="volunteers smiling"
         />
         <div className="container mx-auto px-4 md:px-6 text-center relative">
           <div className="max-w-3xl mx-auto bg-black/30 backdrop-blur-sm p-8 rounded-lg">
