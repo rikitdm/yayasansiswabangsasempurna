@@ -1,7 +1,8 @@
 
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { generateImpactNarrativeAction } from "@/app/actions";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -28,7 +29,7 @@ function SubmitButton() {
 }
 
 export function DonationImpactForm() {
-  const [state, formAction] = useFormState(generateImpactNarrativeAction, initialState);
+  const [state, formAction] = useActionState(generateImpactNarrativeAction, initialState);
   
   return (
     <Card className="w-full max-w-2xl mx-auto shadow-lg">
