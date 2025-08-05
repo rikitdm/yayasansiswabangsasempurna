@@ -107,10 +107,10 @@ export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArti
       return { id: doc.id, ...doc.data() } as NewsArticle;
     }
     
-    // If not found in Firestore, check the seed data as a fallback.
-    console.log(`No article found in Firestore with slug: ${slug}. Checking seed data.`);
-    const seededArticle = seedData.find(a => a.slug === slug);
-    return seededArticle ? { ...seededArticle, id: `seed-${slug}` } : null;
+    // Fallback to check seed data only if firestore fetch might have failed and returned empty.
+    const allArticles = await getNewsArticles();
+    const article = allArticles.find(a => a.slug === slug);
+    return article ? { ...article } : null;
 
   } catch (error) {
      console.error(`Error fetching article with slug ${slug}:`, error);
