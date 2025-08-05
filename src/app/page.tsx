@@ -138,7 +138,7 @@ export default async function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-10 lg:grid-cols-1">
             <div className="space-y-4 text-center">
-              <Building className="h-12 w-12 mx-auto lg:mx-0 text-primary" />
+              <Building className="h-12 w-12 mx-auto text-primary" />
               <h3 className="text-2xl font-bold font-headline">For Companies</h3>
               <p className="text-muted-foreground max-w-2xl mx-auto">Partner with us to amplify your company's social impact through strategic giving.</p>
               <Button variant="outline">Corporate Partnerships</Button>
