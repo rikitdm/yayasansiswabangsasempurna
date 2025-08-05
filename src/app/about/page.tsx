@@ -65,6 +65,8 @@ const teamMembers = [
 ];
 
 export default function AboutPage() {
+  const heroImage = "https://placehold.co/600x400.png";
+
   return (
     <>
       <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24">
@@ -83,7 +85,7 @@ export default function AboutPage() {
           </div>
           <div>
             <Image
-              src="https://placehold.co/600x400.png"
+              src={heroImage}
               alt="Our team working"
               width={600}
               height={400}
