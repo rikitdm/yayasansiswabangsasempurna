@@ -12,7 +12,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { NewsCard } from "@/components/news-card";
-import { generateImage } from "@/ai/flows/generate-image";
 
 const projects = [
   {
@@ -74,8 +73,7 @@ const newsArticles = [
 
 
 export default async function Home() {
-
-  const { imageUrl } = await generateImage({prompt: 'A heartwarming, realistic photograph of a group of diverse Indonesian school children, smiling and hopeful. They are gathered in a simple, clean classroom setting, with sunlight streaming in. The focus is on their bright faces, capturing their potential and the positive impact of educational support. The style should be authentic and uplifting, suitable for a charity organization website.'});
+  const imageUrl = "https://firebasestorage.googleapis.com/v0/b/yayasan-siswa-bangsa-sempurna.firebasestorage.app/o/Hero%20Image%2F4.png?alt=media&token=6b422c74-6d4c-4737-9fd1-63cc8f789cb6";
 
   return (
     <>
