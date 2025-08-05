@@ -14,6 +14,8 @@ export interface NewsArticle {
   title: string;
   description: string;
   content: string;
+  author?: string;
+  publishedDate?: string;
 }
 
 // Re-export the type for easy access elsewhere

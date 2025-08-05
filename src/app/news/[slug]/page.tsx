@@ -34,13 +34,22 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24">
       <article className="max-w-4xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-4">
             <Badge variant="secondary">{article.category}</Badge>
         </div>
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline mb-4 text-primary">
           {article.title}
         </h1>
-        <p className="text-lg text-muted-foreground mb-8">{article.description}</p>
+        
+        {(article.author || article.publishedDate) && (
+            <div className="mb-8 text-lg text-muted-foreground">
+              {article.author && <span>By {article.author}</span>}
+              {article.author && article.publishedDate && <span> &middot; </span>}
+              {article.publishedDate && <span>{new Date(article.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>}
+            </div>
+        )}
+
+        <p className="text-xl text-muted-foreground font-semibold mb-8">{article.description}</p>
         <Image
           src={article.imageSrc}
           alt={article.title}
