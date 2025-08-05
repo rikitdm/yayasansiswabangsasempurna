@@ -11,6 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/context/auth-context";
+import { signOutUser } from "@/lib/auth";
+import { useRouter } from "next/navigation";
+
 
 const menuItems = [
   { label: "About Us", href: "/about" },
@@ -30,6 +34,14 @@ const menuItems = [
 ];
 
 export function Header() {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOutUser();
+    router.push('/');
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
@@ -71,7 +83,16 @@ export function Header() {
           )}
         </nav>
         <div className="hidden items-center gap-4 md:flex">
-          <Link href="/signup"><Button variant="ghost">Sign In</Button></Link>
+          {!loading && (
+             user ? (
+                <Button variant="ghost" onClick={handleSignOut}>Sign Out</Button>
+            ) : (
+                <>
+                <Link href="/signin"><Button variant="ghost">Sign In</Button></Link>
+                <Link href="/signup"><Button variant="outline">Sign Up</Button></Link>
+                </>
+            )
+          )}
           <Link href="/give">
             <Button className="bg-accent hover:bg-accent/90">
                 <HandHeart className="mr-2 h-4 w-4" /> Donate
@@ -120,7 +141,16 @@ export function Header() {
                 )}
               </nav>
               <div className="mt-4 flex flex-col gap-2">
-                 <Link href="/signup"><Button variant="outline">Sign In</Button></Link>
+                 {!loading && (
+                    user ? (
+                        <Button variant="outline" onClick={handleSignOut}>Sign Out</Button>
+                    ) : (
+                        <>
+                        <Link href="/signin"><Button variant="outline">Sign In</Button></Link>
+                        <Link href="/signup"><Button>Sign Up</Button></Link>
+                        </>
+                    )
+                 )}
                  <Link href="/give">
                     <Button className="bg-accent hover:bg-accent/90 w-full">
                     <HandHeart className="mr-2 h-4 w-4" /> Donate

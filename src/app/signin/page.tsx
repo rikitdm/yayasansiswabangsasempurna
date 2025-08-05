@@ -10,22 +10,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { signUp } from "@/lib/auth";
+import { signIn } from "@/lib/auth";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleSignUp = async (e: React.FormEvent) => {
+  const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
-      const userCredential = await signUp(email, password);
-      if(userCredential) {
-        router.push("/");
-      }
+      await signIn(email, password);
+      router.push("/");
     } catch (error: any) {
       setError(error.message);
     }
@@ -35,13 +33,13 @@ export default function SignUpPage() {
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24 flex items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-headline">Create an Account</CardTitle>
+          <CardTitle className="text-2xl font-headline">Sign In</CardTitle>
           <CardDescription>
-            Join our network and start making a difference today.
+            Welcome back! Sign in to your account.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSignUp} className="space-y-4">
+          <form onSubmit={handleSignIn} className="space-y-4">
              {error && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
@@ -70,13 +68,13 @@ export default function SignUpPage() {
               />
             </div>
             <Button type="submit" className="w-full">
-              Create Account
+              Sign In
             </Button>
           </form>
           <div className="mt-4 text-center text-sm text-muted-foreground">
-            Already have an account?{" "}
-            <Link href="/signin" className="underline">
-              Sign in
+            Don't have an account?{" "}
+            <Link href="/signup" className="underline">
+              Sign up
             </Link>
           </div>
         </CardContent>
