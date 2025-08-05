@@ -37,6 +37,33 @@ const differenceCards = [
     },
 ];
 
+const teamMembers = [
+    {
+        name: "Nahdi Permadi",
+        role: "Ketua Yayasan",
+        imageSrc: "https://placehold.co/300x300.png",
+        imageHint: "portrait person"
+    },
+    {
+        name: "Anis Toha Mansur",
+        role: "Dewan Penasehat",
+        imageSrc: "https://placehold.co/300x300.png",
+        imageHint: "portrait person"
+    },
+    {
+        name: "Adrian Wakum",
+        role: "Funds Operation",
+        imageSrc: "https://placehold.co/300x300.png",
+        imageHint: "portrait person"
+    },
+    {
+        name: "Riki Kusnadi",
+        role: "IT Support",
+        imageSrc: "https://placehold.co/300x300.png",
+        imageHint: "portrait person"
+    }
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -78,6 +105,33 @@ export default function AboutPage() {
              <p className="text-muted-foreground">
                When we close the gap, we open opportunity: for donors and nonprofits to better serve their communities, for communities to become more resilient and for us all to create less waste. But most of all, we help people to reach their boundless potential.
             </p>
+        </div>
+
+        {/* Our Team Section */}
+        <div className="py-12 md:py-16">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Our Team</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamMembers.map((member) => (
+                    <Card key={member.name} className="text-center flex flex-col items-center justify-start p-4">
+                        <Image
+                          src={member.imageSrc}
+                          alt={member.name}
+                          width={150}
+                          height={150}
+                          className="rounded-full mx-auto mb-4"
+                          data-ai-hint={member.imageHint}
+                        />
+                        <CardHeader className="p-0">
+                            <CardTitle className="font-headline text-xl">{member.name}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-2">
+                            <p className="text-muted-foreground">{member.role}</p>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
         </div>
 
         {/* Make a Difference Section */}
