@@ -1,9 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -31,22 +29,34 @@ const initialState = {
   errors: null,
 };
 
-function SubmitButton() {
-    const { pending } = useFormStatus();
-    return (
-        <Button type="submit" disabled={pending}>
-            {pending ? "Submitting..." : "Submit Donation Inquiry"}
-        </Button>
-    )
-}
 
 export function DonateGoodsDialog() {
-  const [state, formAction] = useActionState(submitGoodsDonationAction, initialState);
+  const [state, setState] = useState(initialState);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState<Date>();
+  const [isPending, startTransition] = useTransition();
+
+  const handleSubmit = async (formData: FormData) => {
+    startTransition(async () => {
+        const result = await submitGoodsDonationAction(state, formData);
+        setState(result);
+        if (result.success) {
+            // Reset form fields if needed, but we are showing a success message
+        }
+    });
+  }
+
+  // Reset state when dialog is closed
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+        setState(initialState);
+        setDate(undefined);
+    }
+    setOpen(isOpen);
+  }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button size="lg" className="mt-4 md:mt-0">Donate Goods</Button>
       </DialogTrigger>
@@ -58,7 +68,7 @@ export function DonateGoodsDialog() {
                 <DialogDescription>
                     Your donation inquiry has been received. Our team will contact you shortly to coordinate the pick-up.
                 </DialogDescription>
-                <Button onClick={() => setOpen(false)}>Close</Button>
+                <Button onClick={() => handleOpenChange(false)}>Close</Button>
             </div>
          ) : (
             <>
@@ -75,7 +85,7 @@ export function DonateGoodsDialog() {
                     <AlertDescription>{state.message}</AlertDescription>
                 </Alert>
             )}
-            <form action={formAction} className="space-y-4 py-4">
+            <form action={handleSubmit} className="space-y-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="name" className="text-right">Name</Label>
                     <Input id="name" name="name" placeholder="Your full name" className="col-span-3" />
@@ -134,7 +144,9 @@ export function DonateGoodsDialog() {
                 {state.errors?.items && <p className="col-span-4 text-right text-sm font-medium text-destructive">{state.errors.items[0]}</p>}
                 
                 <DialogFooter>
-                    <SubmitButton />
+                    <Button type="submit" disabled={isPending}>
+                        {isPending ? "Submitting..." : "Submit Donation Inquiry"}
+                    </Button>
                 </DialogFooter>
             </form>
             </>
@@ -143,3 +155,4 @@ export function DonateGoodsDialog() {
     </Dialog>
   );
 }
+
