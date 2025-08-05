@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { NewsCard } from "@/components/news-card";
+import { newsArticles } from "@/lib/news-data";
 
 const projects = [
   {
@@ -41,36 +42,7 @@ const projects = [
   },
 ];
 
-const newsArticles = [
-  {
-    imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "education children",
-    category: "Education",
-    title: "How Your Support is Building Brighter Futures",
-    description: "Read about how our latest education initiatives are making a difference in children's lives.",
-  },
-  {
-    imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "disaster relief supplies",
-    category: "Disaster Relief",
-    title: "On the Front Lines: Our Response to the Latest Crisis",
-    description: "Learn how our teams are providing critical aid to communities affected by recent events.",
-  },
-  {
-    imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "community health",
-    category: "Health",
-    title: "Bringing Healthcare to Remote Villages",
-    description: "Discover the impact of our mobile health clinics on underserved populations.",
-  },
-  {
-    imageSrc: "https://placehold.co/400x250.png",
-    imageHint: "clean water well",
-    category: "Clean Water",
-    title: "A Sip of Hope: New Wells Bring Life to a Community",
-    description: "See how access to clean water is transforming a village in a draught-stricken region.",
-  },
-];
+const homeNewsArticles = newsArticles.slice(0, 4);
 
 
 export default async function Home() {
@@ -141,10 +113,10 @@ export default async function Home() {
             className="w-full"
           >
             <CarouselContent>
-              {newsArticles.map((article, index) => (
+              {homeNewsArticles.map((article, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <NewsCard {...article} />
+                    <NewsCard article={article} />
                   </div>
                 </CarouselItem>
               ))}
