@@ -1,7 +1,8 @@
 
 "use client";
 
-import { useState, useActionState } from "react";
+import { useState } from "react";
+import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -98,7 +99,7 @@ export function DonateGoodsDialog() {
                     <Input id="company" name="company" placeholder="Your company name (optional)" className="col-span-3" />
                 </div>
                 
-                <input type="hidden" name="pickupTime" value={date?.toISOString()} />
+                <input type="hidden" name="pickupTime" value={date?.toISOString() || ''} />
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="pickupTime" className="text-right">Pick-up Date</Label>
                      <Popover>
