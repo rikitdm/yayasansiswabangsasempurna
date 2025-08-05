@@ -52,6 +52,7 @@ export const generateImpactNarrativeAction = async (prevState: any, formData: Fo
 
 export const submitGoodsDonationAction = async (prevState: any, formData: FormData) => {
   const schema = z.object({
+    userId: z.string(),
     name: z.string().min(1, "Name is required."),
     email: z.string().email("Invalid email address."),
     phone: z.string().min(1, "Phone number is required."),

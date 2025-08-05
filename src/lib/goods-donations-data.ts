@@ -5,6 +5,7 @@ import { db } from './firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 
 export interface GoodsDonation {
+    userId: string;
     name: string;
     email: string;
     phone: string;
