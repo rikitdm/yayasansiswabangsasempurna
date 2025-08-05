@@ -2,13 +2,14 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, HandHeart, Mountain } from "lucide-react";
+import { Menu, HandHeart, Mountain, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/context/auth-context";
@@ -85,7 +86,23 @@ export function Header() {
         <div className="hidden items-center gap-4 md:flex">
           {!loading && (
              user ? (
-                <Button variant="ghost" onClick={handleSignOut}>Sign Out</Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <User className="h-5 w-5" />
+                      <span className="sr-only">User Menu</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile">My Profile</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={handleSignOut}>
+                      Sign Out
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
             ) : (
                 <>
                 <Link href="/signin"><Button variant="ghost">Sign In</Button></Link>
@@ -143,7 +160,10 @@ export function Header() {
               <div className="mt-4 flex flex-col gap-2">
                  {!loading && (
                     user ? (
+                        <>
+                        <Link href="/profile"><Button variant="outline" className="w-full justify-start gap-2"><User />My Profile</Button></Link>
                         <Button variant="outline" onClick={handleSignOut}>Sign Out</Button>
+                        </>
                     ) : (
                         <>
                         <Link href="/signin"><Button variant="outline">Sign In</Button></Link>
