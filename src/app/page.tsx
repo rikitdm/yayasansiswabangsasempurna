@@ -3,6 +3,7 @@ import { ProjectCard } from "@/components/project-card";
 import { HandHeart, Newspaper, Globe, Building } from "lucide-react";
 import Image from "next/image";
 import { DonationImpactForm } from "@/components/donation-impact-form";
+import { DonationForm } from "@/components/donation-form";
 
 const projects = [
   {
@@ -44,19 +45,18 @@ export default function Home() {
           className="object-cover -z-10"
           data-ai-hint="volunteers smiling"
         />
-        <div className="container mx-auto px-4 md:px-6 text-center relative">
-          <div className="max-w-3xl mx-auto bg-black/30 backdrop-blur-sm p-8 rounded-lg">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white font-headline">
-              Connect Your Generosity with Need
-            </h1>
-            <p className="mt-4 text-lg text-gray-200 md:text-xl">
-              Join our community of donors and nonprofits to make a tangible impact on lives around the world.
-            </p>
-            <div className="mt-6">
-              <Button size="lg" variant="default" className="bg-accent hover:bg-accent/90">
-                <HandHeart className="mr-2 h-5 w-5" />
-                Give Now
-              </Button>
+        <div className="container mx-auto px-4 md:px-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white font-headline">
+                Connect Your Generosity with Need
+              </h1>
+              <p className="mt-4 text-lg text-gray-200 md:text-xl">
+                Join our community of donors and nonprofits to make a tangible impact on lives around the world.
+              </p>
+            </div>
+            <div>
+              <DonationForm />
             </div>
           </div>
         </div>
