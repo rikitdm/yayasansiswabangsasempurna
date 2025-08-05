@@ -79,23 +79,23 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full py-20 md:py-32 lg:py-40 bg-card">
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+      <section className="relative w-full py-20 md:py-32 lg:py-40">
         <Image
           src={imageUrl}
           alt="Happy Indonesian children"
           fill
-          className="object-cover -z-10"
+          className="object-cover"
           data-ai-hint="indonesian children"
           priority
         />
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-primary font-headline">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white font-headline [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                 Connect Your Generosity with Need
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground md:text-xl">
+              <p className="mt-4 text-lg text-white/90 md:text-xl [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
                 Join our community of donors and nonprofits to make a tangible impact on lives around the world.
               </p>
             </div>
