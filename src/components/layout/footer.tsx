@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -16,17 +17,17 @@ export function Footer() {
     {
       title: "About",
       links: [
-        { label: "Our Mission", href: "#" },
-        { label: "Team", href: "#" },
-        { label: "Careers", href: "#" },
+        { label: "Our Mission", href: "/about" },
+        { label: "Team", href: "/about" },
+        { label: "Careers", href: "/about" },
       ],
     },
     {
       title: "Support",
       links: [
-        { label: "Help Center", href: "#" },
-        { label: "Contact Us", href: "#" },
-        { label: "FAQs", href: "#" },
+        { label: "Help Center", href: "/help" },
+        { label: "Contact Us", href: "/help" },
+        { label: "FAQs", href: "/help" },
       ],
     },
     {
@@ -42,7 +43,7 @@ export function Footer() {
     <footer className="bg-card text-card-foreground">
       <div className="container mx-auto grid grid-cols-1 gap-8 px-4 py-12 md:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div className="flex flex-col items-start gap-4">
-          <Link href="#" className="flex items-center gap-2" prefetch={false}>
+          <Link href="/" className="flex items-center gap-2" prefetch={false}>
             <Mountain className="h-8 w-8 text-primary" />
             <span className="text-2xl font-bold text-primary font-headline">
               Yayasan Siswa Bangsa Sempurna

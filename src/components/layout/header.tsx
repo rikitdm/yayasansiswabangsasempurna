@@ -13,27 +13,27 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const menuItems = [
-  { label: "About Us", href: "#" },
-  { label: "For Companies", href: "#" },
-  { label: "For Nonprofits", href: "#" },
-  { label: "Disasters", href: "#" },
-  { label: "News & Stories", href: "#" },
+  { label: "About Us", href: "/about" },
+  { label: "For Companies", href: "/companies" },
+  { label: "For Nonprofits", href: "/nonprofits" },
+  { label: "Disasters", href: "/disasters" },
+  { label: "News & Stories", href: "/news" },
   {
     label: "Ways to Give",
     dropdown: [
-      { label: "One-time Donation", href: "#" },
-      { label: "Monthly Giving", href: "#" },
-      { label: "Corporate Matching", href: "#" },
+      { label: "One-time Donation", href: "/give" },
+      { label: "Monthly Giving", href: "/give#monthly" },
+      { label: "Corporate Matching", href: "/companies" },
     ],
   },
-  { label: "Help", href: "#" },
+  { label: "Help", href: "/help" },
 ];
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#" className="flex items-center gap-2" prefetch={false}>
+        <Link href="/" className="flex items-center gap-2" prefetch={false}>
           <Mountain className="h-6 w-6 text-primary" />
           <span className="text-xl font-bold text-primary font-headline">
             Yayasan Siswa Bangsa Sempurna
@@ -85,7 +85,7 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right">
             <div className="grid gap-4 p-4">
-              <Link href="#" className="flex items-center gap-2" prefetch={false}>
+              <Link href="/" className="flex items-center gap-2" prefetch={false}>
                 <Mountain className="h-6 w-6 text-primary" />
                 <span className="text-xl font-bold text-primary font-headline">
                   Yayasan Siswa Bangsa Sempurna
