@@ -1,6 +1,4 @@
 
-"use client";
-
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -21,7 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(user);
       setLoading(false);
     });
-
+    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 

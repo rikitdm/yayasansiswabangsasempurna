@@ -4,7 +4,9 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
   signOut,
-  UserCredential
+  UserCredential,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "firebase/auth";
 
 export const signUp = async (email: string, password: string): Promise<UserCredential> => {
@@ -18,3 +20,8 @@ export const signIn = async (email: string, password: string): Promise<UserCrede
 export const signOutUser = async (): Promise<void> => {
     return await signOut(auth);
 };
+
+export const signInWithGoogle = async (): Promise<UserCredential> => {
+    const provider = new GoogleAuthProvider();
+    return await signInWithPopup(auth, provider);
+}
