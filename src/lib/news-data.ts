@@ -1,6 +1,6 @@
 
 import { db } from './firebase';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, addDoc } from 'firebase/firestore';
 import { cache } from 'react';
 
 export interface NewsArticle {
@@ -19,6 +19,7 @@ export type { NewsArticle as NewsArticleType };
 
 const articlesCollection = collection(db, 'newsArticles');
 
+// This data is now only for reference or potential seeding scripts, but is not used as a fallback.
 const seedData: NewsArticle[] = [
     {
       slug: 'how-your-support-is-building-brighter-futures',
@@ -54,14 +55,13 @@ export const getNewsArticles = cache(async (): Promise<NewsArticle[]> => {
   try {
     const snapshot = await getDocs(articlesCollection);
     if (snapshot.empty) {
-      console.warn("Firestore 'newsArticles' collection is empty. Returning seed data.");
-      return seedData;
+      return [];
     }
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NewsArticle));
   } catch (error) {
-    console.error("Error fetching news articles from Firestore. Returning seed data.", error);
-    // If there is any error fetching from Firestore, return the seed data as a fallback.
-    return seedData;
+    console.error("Error fetching news articles from Firestore:", error);
+    // In case of error (e.g. permissions), return an empty array to avoid crashing.
+    return [];
   }
 });
 
@@ -71,27 +71,14 @@ export const getNewsArticleBySlug = cache(async (slug: string): Promise<NewsArti
     const q = query(articlesCollection, where("slug", "==", slug));
     const snapshot = await getDocs(q);
 
-    if (!snapshot.empty) {
-      const doc = snapshot.docs[0];
-      return { id: doc.id, ...doc.data() } as NewsArticle;
+    if (snapshot.empty) {
+      return null;
     }
     
-    // Fallback to seed data if not found in Firestore
-    const seedArticle = seedData.find(a => a.slug === slug);
-    if (seedArticle) {
-      console.warn(`Article with slug "${slug}" not found in Firestore. Returning from seed data.`);
-      return seedArticle;
-    }
-
-    return null;
+    const doc = snapshot.docs[0];
+    return { id: doc.id, ...doc.data() } as NewsArticle;
   } catch (error) {
-    console.error(`Error fetching article by slug "${slug}" from Firestore.`, error);
-     // Fallback to seed data on error
-    const seedArticle = seedData.find(a => a.slug === slug);
-    if (seedArticle) {
-      console.warn(`Error fetching article with slug "${slug}" from Firestore. Returning from seed data.`);
-      return seedArticle;
-    }
+    console.error(`Error fetching article by slug "${slug}" from Firestore:`, error);
     return null;
   }
 });
