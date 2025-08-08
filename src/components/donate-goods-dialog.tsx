@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useTransition } from "react";
@@ -41,7 +40,7 @@ export function DonateGoodsDialog() {
 
   const handleSubmit = (formData: FormData) => {
     if (!user) {
-        setFormState({ ...initialState, message: "You must be signed in to submit a donation." });
+        setFormState({ ...initialState, message: "Anda harus masuk untuk mengirimkan donasi." });
         return;
     }
     // Add user id to the form data
@@ -68,24 +67,24 @@ export function DonateGoodsDialog() {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button size="lg" className="mt-4 md:mt-0">Donate Goods</Button>
+        <Button size="lg" className="mt-4 md:mt-0">Donasi Barang</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
          {formState.success ? (
             <div className="py-8 text-center space-y-4">
                 <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto" />
-                <DialogTitle>Thank You!</DialogTitle>
+                <DialogTitle>Terima Kasih!</DialogTitle>
                 <DialogDescription>
-                    Your donation inquiry has been received. Our team will contact you shortly to coordinate the pick-up.
+                    Permintaan donasi Anda telah diterima. Tim kami akan segera menghubungi Anda untuk mengoordinasikan pengambilan.
                 </DialogDescription>
-                <Button onClick={() => handleOpenChange(false)}>Close</Button>
+                <Button onClick={() => handleOpenChange(false)}>Tutup</Button>
             </div>
          ) : (
             <>
             <DialogHeader>
-                <DialogTitle>Donate Goods</DialogTitle>
+                <DialogTitle>Donasi Barang</DialogTitle>
                 <DialogDescription>
-                Fill out the form below to initiate your goods donation. We'll be in touch to coordinate.
+                Isi formulir di bawah ini untuk memulai donasi barang Anda. Kami akan menghubungi Anda untuk berkoordinasi.
                 </DialogDescription>
             </DialogHeader>
              {formState.message && !formState.success && (
@@ -96,45 +95,45 @@ export function DonateGoodsDialog() {
                 </Alert>
             )}
             
-            {loading ? <p>Loading...</p> : !user ? (
+            {loading ? <p>Memuat...</p> : !user ? (
                  <div className="py-8 text-center space-y-4">
                     <AlertCircle className="w-16 h-16 text-destructive mx-auto" />
-                    <DialogTitle>Please Sign In</DialogTitle>
+                    <DialogTitle>Silakan Masuk</DialogTitle>
                     <DialogDescription>
-                        You need to be signed in to donate goods. This allows us to keep track of your contributions and for you to see your impact.
+                        Anda harus masuk untuk menyumbangkan barang. Ini memungkinkan kami untuk melacak kontribusi Anda dan agar Anda dapat melihat dampaknya.
                     </DialogDescription>
                     <div className="flex gap-4 justify-center">
-                        <Button asChild><Link href="/signin">Sign In</Link></Button>
-                        <Button asChild variant="outline"><Link href="/signup">Sign Up</Link></Button>
+                        <Button asChild><Link href="/signin">Masuk</Link></Button>
+                        <Button asChild variant="outline"><Link href="/signup">Daftar</Link></Button>
                     </div>
                 </div>
             ) : (
                 <form action={handleSubmit} className="space-y-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">Name</Label>
-                        <Input id="name" name="name" placeholder="Your full name" className="col-span-3" defaultValue={user.displayName ?? ''} />
+                        <Label htmlFor="name" className="text-right">Nama</Label>
+                        <Input id="name" name="name" placeholder="Nama lengkap Anda" className="col-span-3" defaultValue={user.displayName ?? ''} />
                     </div>
                      {formState.errors?.name && <p className="col-span-4 text-right text-sm font-medium text-destructive">{formState.errors.name[0]}</p>}
                     
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="email" className="text-right">Email</Label>
-                        <Input id="email" name="email" type="email" placeholder="your.email@example.com" className="col-span-3" defaultValue={user.email ?? ''} />
+                        <Input id="email" name="email" type="email" placeholder="email.anda@contoh.com" className="col-span-3" defaultValue={user.email ?? ''} />
                     </div>
                     {formState.errors?.email && <p className="col-span-4 text-right text-sm font-medium text-destructive">{formState.errors.email[0]}</p>}
 
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="phone" className="text-right">Phone</Label>
-                        <Input id="phone" name="phone" placeholder="Your phone number" className="col-span-3" />
+                        <Label htmlFor="phone" className="text-right">Telepon</Label>
+                        <Input id="phone" name="phone" placeholder="Nomor telepon Anda" className="col-span-3" />
                     </div>
                     {formState.errors?.phone && <p className="col-span-4 text-right text-sm font-medium text-destructive">{formState.errors.phone[0]}</p>}
 
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="company" className="text-right">Company</Label>
-                        <Input id="company" name="company" placeholder="Your company name (optional)" className="col-span-3" />
+                        <Label htmlFor="company" className="text-right">Perusahaan</Label>
+                        <Input id="company" name="company" placeholder="Nama perusahaan Anda (opsional)" className="col-span-3" />
                     </div>
                     
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="pickupTime" className="text-right">Pick-up Date</Label>
+                        <Label htmlFor="pickupTime" className="text-right">Tanggal Pengambilan</Label>
                          <Popover>
                             <PopoverTrigger asChild>
                                 <Button
@@ -145,7 +144,7 @@ export function DonateGoodsDialog() {
                                 )}
                                 >
                                 <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                {date ? format(date, "PPP") : <span>Pilih tanggal</span>}
                                 </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0">
@@ -161,14 +160,14 @@ export function DonateGoodsDialog() {
                     {formState.errors?.pickupTime && <p className="col-span-4 text-right text-sm font-medium text-destructive">{formState.errors.pickupTime[0]}</p>}
 
                     <div className="grid grid-cols-4 items-start gap-4">
-                        <Label htmlFor="items" className="text-right pt-2">Items</Label>
-                        <Textarea id="items" name="items" placeholder="Please describe the goods you'd like to donate (e.g., 10 boxes of new clothing, 1 pallet of canned goods)." className="col-span-3" />
+                        <Label htmlFor="items" className="text-right pt-2">Barang</Label>
+                        <Textarea id="items" name="items" placeholder="Harap jelaskan barang yang ingin Anda sumbangkan (mis., 10 kotak pakaian baru, 1 palet makanan kaleng)." className="col-span-3" />
                     </div>
                     {formState.errors?.items && <p className="col-span-4 text-right text-sm font-medium text-destructive">{formState.errors.items[0]}</p>}
                     
                     <DialogFooter>
                         <Button type="submit" disabled={isPending}>
-                            {isPending ? "Submitting..." : "Submit Donation Inquiry"}
+                            {isPending ? "Mengirim..." : "Kirim Permintaan Donasi"}
                         </Button>
                     </DialogFooter>
                 </form>

@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import {
   Accordion,
@@ -14,30 +13,30 @@ import { Button } from "@/components/ui/button";
 
 
 export const metadata: Metadata = {
-  title: "Help & FAQ | Yayasan Siswa Bangsa Sempurna",
-  description: "Find answers to frequently asked questions or contact us directly.",
+  title: "Bantuan & FAQ | Yayasan Siswa Bangsa Sempurna",
+  description: "Temukan jawaban atas pertanyaan yang sering diajukan atau hubungi kami secara langsung.",
 };
 
 const faqs = [
     {
-        question: "Is my donation tax-deductible?",
-        answer: "Yes, we are a registered 501(c)(3) non-profit organization, and all donations are tax-deductible to the extent allowed by law."
+        question: "Apakah donasi saya dapat mengurangi pajak?",
+        answer: "Ya, kami adalah organisasi nirlaba 501(c)(3) yang terdaftar, dan semua donasi dapat dikurangkan dari pajak sejauh diizinkan oleh hukum."
     },
     {
-        question: "How much of my donation goes directly to programs?",
-        answer: "We are proud to say that 85% of every dollar donated goes directly to our programs and services, with the remaining 15% covering administrative and fundraising costs."
+        question: "Berapa persen dari donasi saya yang langsung disalurkan ke program?",
+        answer: "Kami bangga mengatakan bahwa 85% dari setiap dolar yang didonasikan langsung disalurkan ke program dan layanan kami, dengan sisa 15% untuk menutupi biaya administrasi dan penggalangan dana."
     },
     {
-        question: "Can I choose which project my donation supports?",
-        answer: "Absolutely. When you donate, you can select a specific project or fund you wish to support. If you don't select one, your gift will be used where it is needed most."
+        question: "Dapatkah saya memilih proyek mana yang didukung oleh donasi saya?",
+        answer: "Tentu saja. Saat Anda berdonasi, Anda dapat memilih proyek atau dana tertentu yang ingin Anda dukung. Jika Anda tidak memilih, donasi Anda akan digunakan di tempat yang paling membutuhkan."
     },
     {
-        question: "How do I get a receipt for my donation?",
-        answer: "A receipt for your donation will be sent to the email address you provide at the time of donation. For monthly donors, a consolidated receipt is sent at the end of the year."
+        question: "Bagaimana cara mendapatkan tanda terima untuk donasi saya?",
+        answer: "Tanda terima untuk donasi Anda akan dikirim ke alamat email yang Anda berikan pada saat donasi. Untuk donatur bulanan, tanda terima gabungan dikirim pada akhir tahun."
     },
     {
-        question: "How can I volunteer?",
-        answer: "We have various volunteer opportunities available. Please visit our 'For Nonprofits' page or contact us directly to learn more about how you can get involved."
+        question: "Bagaimana saya bisa menjadi sukarelawan?",
+        answer: "Kami memiliki berbagai peluang sukarelawan yang tersedia. Silakan kunjungi halaman 'Untuk Lembaga Nonprofit' kami atau hubungi kami secara langsung untuk mempelajari lebih lanjut tentang bagaimana Anda dapat terlibat."
     }
 ]
 
@@ -46,17 +45,17 @@ export default function HelpPage() {
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24">
       <div className="mx-auto max-w-3xl text-center">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline">
-          Help Center
+          Pusat Bantuan
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Have questions? We're here to help.
+          Ada pertanyaan? Kami di sini untuk membantu.
         </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-12 mt-12 items-start">
         <div className="space-y-8">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                Frequently Asked Questions
+                Pertanyaan yang Sering Diajukan
             </h2>
             <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, i) => (
@@ -72,26 +71,26 @@ export default function HelpPage() {
         <div>
             <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">Contact Us</CardTitle>
+                    <CardTitle className="font-headline text-2xl">Hubungi Kami</CardTitle>
                     <CardDescription>
-                        Can't find the answer you're looking for? Fill out the form below.
+                        Tidak dapat menemukan jawaban yang Anda cari? Isi formulir di bawah ini.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                    <form className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" placeholder="Enter your name" />
+                            <Label htmlFor="name">Nama</Label>
+                            <Input id="name" placeholder="Masukkan nama Anda" />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
-                            <Input id="email" type="email" placeholder="Enter your email" />
+                            <Input id="email" type="email" placeholder="Masukkan email Anda" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="message">Message</Label>
-                            <Textarea id="message" placeholder="Enter your message" className="min-h-[120px]" />
+                            <Label htmlFor="message">Pesan</Label>
+                            <Textarea id="message" placeholder="Masukkan pesan Anda" className="min-h-[120px]" />
                         </div>
-                        <Button type="submit" className="w-full">Send Message</Button>
+                        <Button type="submit" className="w-full">Kirim Pesan</Button>
                    </form>
                 </CardContent>
             </Card>

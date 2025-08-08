@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,50 +5,50 @@ import { CheckCircle2 } from "lucide-react";
 import { DonateGoodsDialog } from "@/components/donate-goods-dialog";
 
 export const metadata: Metadata = {
-    title: "Donate Goods | Yayasan Siswa Bangsa Sempurna",
-    description: "Learn about the types of goods we accept and how your donation makes a difference.",
+    title: "Donasi Barang | Yayasan Siswa Bangsa Sempurna",
+    description: "Pelajari tentang jenis barang yang kami terima dan bagaimana donasi Anda membuat perbedaan.",
 };
 
 const itemCategories = [
   {
-    title: "Clothing",
-    items: ["Shoes", "Boots", "Coats", "Dress & Work Clothes", "Sweaters", "Pants", "Shorts", "Skirts", "Shirts", "Under Garments", "Hats", "Caps Gloves", "Scarves", "Purses", "Belts", "Watches", "And Accessories"],
+    title: "Pakaian",
+    items: ["Sepatu", "Sepatu Bot", "Mantel", "Pakaian Formal & Kerja", "Sweater", "Celana", "Celana Pendek", "Rok", "Kemeja", "Pakaian Dalam", "Topi", "Topi Sarung Tangan", "Syal", "Dompet", "Ikat Pinggang", "Jam Tangan", "Dan Aksesoris"],
   },
   {
-    title: "Infant Supplies",
-    items: ["Diapers", "Wipes", "Creams", "Lotions", "Strollers", "Car Seats", "Bottles", "Onesies", "Sleepers", "Blankets", "Pack-N-Plays", "Cribs", "Baby Monitors"],
+    title: "Perlengkapan Bayi",
+    items: ["Popok", "Tisu Basah", "Krim", "Lotion", "Kereta Dorong", "Kursi Mobil", "Botol", "Baju Monyet", "Baju Tidur", "Selimut", "Boks Bayi", "Tempat Tidur Bayi", "Monitor Bayi"],
   },
   {
-    title: "Toys & games",
-    items: ["Board Games", "Action Figures", "Dolls", "Stuffed Toys", "Children's Books", "Handheld Electronic Games"],
+    title: "Mainan & permainan",
+    items: ["Permainan Papan", "Figur Aksi", "Boneka", "Mainan Mewah", "Buku Anak-Anak", "Permainan Elektronik Genggam"],
   },
   {
-    title: "Toiletries",
-    items: ["Shampoo", "Deodorant", "Soap", "Toothpaste", "Make-Up", "Fragrances", "Adult Diapers", "OTC Medicines", "First Aid", "Lotions", "Sunscreen", "Bug Spray"],
+    title: "Perlengkapan Mandi",
+    items: ["Sampo", "Deodoran", "Sabun", "Pasta Gigi", "Rias Wajah", "Wewangian", "Popok Dewasa", "Obat OTC", "Pertolongan Pertama", "Lotion", "Tabir Surya", "Semprotan Serangga"],
   },
   {
-    title: "Technology",
-    items: ["Laptops", "Tablets", "Desktop", "Computers"],
+    title: "Teknologi",
+    items: ["Laptop", "Tablet", "Komputer", "Desktop"],
   },
   {
-    title: "Cleaning Supplies",
-    items: ["Detergent", "Fabric Softeners", "All-Purpose Cleaners", "Paper Towels", "Toilet Paper", "Ziploc Bags", "Buckets", "Mops", "Sponges", "Garbage Bags"],
+    title: "Perlengkapan Kebersihan",
+    items: ["Deterjen", "Pelembut Kain", "Pembersih Serbaguna", "Tisu Dapur", "Kertas Toilet", "Kantong Ziploc", "Ember", "Pel", "Spons", "Kantong Sampah"],
   },
   {
-    title: "Office & School supplies",
-    items: ["Copy Paper", "Notebooks", "Calculators", "Backpacks", "Storage Containers", "Markers", "Crayons", "Arts & Crafts Supplies", "Pens", "Staplers", "Tape", "Glue"],
+    title: "Perlengkapan Kantor & Sekolah",
+    items: ["Kertas Fotokopi", "Buku Catatan", "Kalkulator", "Ransel", "Wadah Penyimpanan", "Spidol", "Krayon", "Perlengkapan Seni & Kerajinan", "Pena", "Stapler", "Pita Perekat", "Lem"],
   },
   {
-    title: "Home goods",
-    items: ["Towels", "Kitchen Appliances", "Pots", "Pans", "Glasses", "Silverware", "Bedding", "Pillows", "Mattresses", "Hand Tools", "Power Tools", "Power Strips", "Lumber", "Paint"],
+    title: "Peralatan Rumah Tangga",
+    items: ["Handuk", "Peralatan Dapur", "Panci", "Wajan", "Gelas", "Peralatan Perak", "Sprei", "Bantal", "Kasur", "Peralatan Tangan", "Peralatan Listrik", "Kabel Ekstensi", "Kayu", "Cat"],
   },
   {
-    title: "Electronics",
-    items: ["TVs", "Phones", "Videos", "Music"],
+    title: "Elektronik",
+    items: ["TV", "Ponsel", "Video", "Musik"],
   },
   {
-    title: "Sporting Equipment",
-    items: ["Balls", "Frisbees", "Bats", "Lawn Games", "Athletic Shoes", "Uniforms", "Clothing", "Sports Equipment"],
+    title: "Peralatan Olahraga",
+    items: ["Bola", "Frisbee", "Pemukul", "Permainan Halaman", "Sepatu Atletik", "Seragam", "Pakaian", "Peralatan Olahraga"],
   },
 ];
 
@@ -62,10 +61,10 @@ export default function DonateGoodsPage() {
             <div className="text-center md:text-left mb-8 md:flex md:items-center md:justify-between">
                 <div>
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">
-                      How You Can Do the Most Good?
+                      Bagaimana Anda Bisa Melakukan Kebaikan Terbanyak?
                     </h1>
                     <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-                      According to the United for ALICE Report, 42% of households already struggled to make ends meet before the pandemic — and today low-wage workers are being priced out of affording the basics due to unprecedented inflation. Every time you donate goods, your organization has a direct impact on people who need it most, now.
+                      Menurut Laporan United for ALICE, 42% rumah tangga sudah berjuang untuk memenuhi kebutuhan sebelum pandemi — dan saat ini pekerja berupah rendah semakin sulit untuk memenuhi kebutuhan dasar karena inflasi yang belum pernah terjadi sebelumnya. Setiap kali Anda menyumbangkan barang, organisasi Anda memberikan dampak langsung kepada orang-orang yang paling membutuhkannya, sekarang.
                     </p>
                 </div>
                 <DonateGoodsDialog />

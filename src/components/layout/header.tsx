@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -15,23 +14,25 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { useAuth } from "@/context/auth-context";
 import { signOutUser } from "@/lib/auth";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 
 
 const menuItems = [
-  { label: "About Us", href: "/about" },
-  { label: "For Companies", href: "/companies" },
-  { label: "For Nonprofits", href: "/nonprofits" },
-  { label: "Disasters", href: "/disasters" },
-  { label: "News & Stories", href: "/news" },
+  { label: "Tentang Kami", href: "/about" },
+  { label: "Untuk Perusahaan", href: "/companies" },
+  { label: "Untuk Lembaga Nonprofit", href: "/nonprofits" },
+  { label: "Proyek", href: "/projects" },
+  { label: "Berita & Cerita", href: "/news" },
   {
-    label: "Ways to Give",
+    label: "Cara Memberi",
     dropdown: [
-      { label: "Online Donation", href: "/give" },
-      { label: "Donate Goods", href: "/give/goods" },
-      { label: "Corporate Matching", href: "/companies" },
+      { label: "Donasi Online", href: "/give" },
+      { label: "Donasi Barang", href: "/give/goods" },
+      { label: "Pencocokan Perusahaan", href: "/companies" },
     ],
   },
-  { label: "Help", href: "/help" },
+  { label: "Bantuan", href: "/help" },
 ];
 
 export function Header() {
@@ -47,7 +48,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-card shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" prefetch={false}>
-          <Mountain className="h-6 w-6 text-primary" />
+          <Image src="https://firebasestorage.googleapis.com/v0/b/yayasan-siswa-bangsa-sem-9uim7.appspot.com/o/Icon%2FLogo_ysbs-removebg-preview.png?alt=media&token=897c6252-2530-4970-b496-2204155192b4" alt="logo" width={40} height={40} />
           <span className="text-xl font-bold text-primary font-headline">
             Yayasan Siswa Bangsa Sempurna
           </span>
@@ -90,29 +91,29 @@ export function Header() {
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="icon">
                       <User className="h-5 w-5" />
-                      <span className="sr-only">User Menu</span>
+                      <span className="sr-only">Menu Pengguna</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem asChild>
-                      <Link href="/profile">My Profile</Link>
+                      <Link href="/profile">Profil Saya</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={handleSignOut}>
-                      Sign Out
+                      Keluar
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
                 <>
-                <Link href="/signin"><Button variant="ghost">Sign In</Button></Link>
-                <Link href="/signup"><Button variant="outline">Sign Up</Button></Link>
+                <Link href="/signin"><Button variant="ghost">Masuk</Button></Link>
+                <Link href="/signup"><Button variant="outline">Daftar</Button></Link>
                 </>
             )
           )}
           <Link href="/give">
             <Button className="bg-accent hover:bg-accent/90">
-                <HandHeart className="mr-2 h-4 w-4" /> Donate
+                <HandHeart className="mr-2 h-4 w-4" /> Donasi
             </Button>
           </Link>
         </div>
@@ -120,12 +121,12 @@ export function Header() {
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="md:hidden">
               <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle navigation menu</span>
+              <span className="sr-only">Buka menu navigasi</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
             <SheetHeader className="border-b pb-4 mb-4">
-              <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+              <SheetTitle className="sr-only">Menu Navigasi Seluler</SheetTitle>
               <Link href="/" className="flex items-center gap-2" prefetch={false}>
                 <Mountain className="h-6 w-6 text-primary" />
                 <span className="text-xl font-bold text-primary font-headline">
@@ -161,19 +162,19 @@ export function Header() {
                  {!loading && (
                     user ? (
                         <>
-                        <Link href="/profile"><Button variant="outline" className="w-full justify-start gap-2"><User />My Profile</Button></Link>
-                        <Button variant="outline" onClick={handleSignOut}>Sign Out</Button>
+                        <Link href="/profile"><Button variant="outline" className="w-full justify-start gap-2"><User />Profil Saya</Button></Link>
+                        <Button variant="outline" onClick={handleSignOut}>Keluar</Button>
                         </>
                     ) : (
                         <>
-                        <Link href="/signin"><Button variant="outline">Sign In</Button></Link>
-                        <Link href="/signup"><Button>Sign Up</Button></Link>
+                        <Link href="/signin"><Button variant="outline">Masuk</Button></Link>
+                        <Link href="/signup"><Button>Daftar</Button></Link>
                         </>
                     )
                  )}
                  <Link href="/give">
                     <Button className="bg-accent hover:bg-accent/90 w-full">
-                    <HandHeart className="mr-2 h-4 w-4" /> Donate
+                    <HandHeart className="mr-2 h-4 w-4" /> Donasi
                     </Button>
                 </Link>
               </div>

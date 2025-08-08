@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,13 +14,18 @@ export function NewsCard({ article }: NewsCardProps) {
     return null;
   }
   const { slug, imageSrc, imageHint, category, title, description, author, publishedDate } = article;
+  
+  // Safely parse the date
+  const date = publishedDate ? new Date(publishedDate) : null;
+  const isValidDate = date && !isNaN(date.getTime());
+
   return (
     <Card className="w-full overflow-hidden transition-all hover:shadow-lg h-full flex flex-col">
        <Link href={`/news/${slug}`} prefetch={false}>
         <CardHeader className="p-0">
           <Image
-            src={imageSrc}
-            alt={title}
+            src={imageSrc || "/placeholder-image.jpg"}
+            alt={title || "News article image"}
             width={400}
             height={250}
             className="aspect-video w-full object-cover"
@@ -30,16 +34,16 @@ export function NewsCard({ article }: NewsCardProps) {
         </CardHeader>
       </Link>
       <CardContent className="p-4 md:p-6 flex-1">
-        <Badge variant="secondary" className="mb-2">{category}</Badge>
+        <Badge variant="secondary" className="mb-2">{category || 'General'}</Badge>
         <CardTitle className="mb-2 font-headline text-xl">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardContent>
       <CardFooter className="p-4 pt-0 md:p-6 md:pt-0 flex-col items-start gap-2">
-        {(author || publishedDate) && (
+        {(author || isValidDate) && (
             <div className="text-sm text-muted-foreground">
               {author && <span>By {author}</span>}
-              {author && publishedDate && <span> &middot; </span>}
-              {publishedDate && <span>{new Date(publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>}
+              {author && isValidDate && <span> &middot; </span>}
+              {isValidDate && <span>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>}
             </div>
         )}
         <Link href={`/news/${slug}`} prefetch={false}>

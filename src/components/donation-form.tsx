@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -44,14 +43,14 @@ export function DonationForm() {
     <Card className="w-full max-w-md bg-white/90 backdrop-blur-sm">
       <CardHeader className="text-center">
         <CardTitle className="font-headline text-xl">
-          DONATE TO HELP CHILDREN IN CRISIS
+          BAGAIMANA ANDA MEMBANTU ANAK-ANAK DALAM KRISIS
         </CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="one-time" onValueChange={setDonationType} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="one-time">One-Time</TabsTrigger>
-            <TabsTrigger value="monthly">Monthly</TabsTrigger>
+            <TabsTrigger value="one-time">Satu Kali Saja</TabsTrigger>
+            <TabsTrigger value="monthly">Rutin</TabsTrigger>
           </TabsList>
           <TabsContent value="one-time">
             <div className="grid grid-cols-2 gap-2 mt-4">
@@ -83,15 +82,15 @@ export function DonationForm() {
           </TabsContent>
         </Tabs>
         <div className="mt-4 text-center text-sm text-muted-foreground px-4">
-            <p>$87 gift could provide a family with a food parcel containing canned beans, hummus, olive oil, bottles of water and other essentials.</p>
+            <p>Donasi sebesar $87 dapat menyediakan satu keluarga dengan paket makanan berisi sembako dan kebutuhan pokok lainnya.</p>
         </div>
         <div className="mt-4 relative">
-            <Label htmlFor="customAmount" className="sr-only">Enter other amount</Label>
+            <Label htmlFor="customAmount" className="sr-only">Masukkan jumlah lain</Label>
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
             <Input
                 id="customAmount"
                 type="text"
-                placeholder="Enter other amount"
+                placeholder="Masukkan jumlah lain"
                 className="pl-7"
                 value={customAmount}
                 onChange={handleCustomAmountChange}
@@ -100,11 +99,11 @@ export function DonationForm() {
         </div>
         <Button size="lg" className="w-full mt-4 bg-accent hover:bg-accent/90">
           <HandHeart className="mr-2" />
-          Donate Now
+          Donasi Sekarang
         </Button>
         <div className="mt-2 text-center text-xs text-muted-foreground flex items-center justify-center gap-1">
             <Lock className="w-3 h-3"/>
-            <span>Your donation is processed securely</span>
+            <span>Donasi Anda diproses dengan aman</span>
         </div>
       </CardContent>
     </Card>

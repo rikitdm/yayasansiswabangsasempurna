@@ -1,39 +1,38 @@
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Yayasan Siswa Bangsa Sempurna",
-  description: "Read our terms of service.",
+  title: "Ketentuan Layanan | Yayasan Siswa Bangsa Sempurna",
+  description: "Baca ketentuan layanan kami.",
 };
 
 export default function TermsOfServicePage() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24 max-w-4xl">
       <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline mb-8 text-primary">
-        Terms of Service
+        Ketentuan Layanan
       </h1>
       <div className="prose prose-lg max-w-none text-muted-foreground">
-        <p>Last updated: {new Date().toLocaleDateString()}</p>
+        <p>Terakhir diperbarui: {new Date().toLocaleDateString()}</p>
         <p>
-          Please read these terms and conditions carefully before using Our Service.
+          Harap baca syarat dan ketentuan ini dengan saksama sebelum menggunakan Layanan Kami.
         </p>
 
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Interpretation and Definitions</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Penafsiran dan Definisi</h2>
         <p>
-          The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
+          Kata-kata yang huruf awalnya ditulis dengan huruf kapital memiliki arti yang didefinisikan dalam kondisi berikut. Definisi berikut akan memiliki arti yang sama terlepas dari apakah mereka muncul dalam bentuk tunggal atau jamak.
         </p>
         
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Acknowledgment</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Pengakuan</h2>
         <p>
-            These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
+            Ini adalah Syarat dan Ketentuan yang mengatur penggunaan Layanan ini dan perjanjian yang berlaku antara Anda dan Perusahaan. Syarat dan Ketentuan ini menetapkan hak dan kewajiban semua pengguna mengenai penggunaan Layanan.
         </p>
         <p>
-            Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.
+            Akses Anda ke dan penggunaan Layanan bergantung pada penerimaan dan kepatuhan Anda terhadap Syarat dan Ketentuan ini. Syarat dan Ketentuan ini berlaku untuk semua pengunjung, pengguna, dan orang lain yang mengakses atau menggunakan Layanan.
         </p>
 
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Contact Us</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Hubungi Kami</h2>
         <p>
-            If you have any questions about these Terms and Conditions, please contact us through the form on our Help page.
+            Jika Anda memiliki pertanyaan tentang Syarat dan Ketentuan ini, silakan hubungi kami melalui formulir di halaman Bantuan kami.
         </p>
       </div>
     </div>

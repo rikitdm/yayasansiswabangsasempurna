@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -10,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { signIn, signInWithGoogle } from "@/lib/auth";
+import { signUp, signInWithGoogle } from "@/lib/auth";
 import { Separator } from "@/components/ui/separator";
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -24,24 +23,27 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
     )
 }
 
-export default function SignInPage() {
+
+export default function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleEmailSignIn = async (e: React.FormEvent) => {
+  const handleEmailSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     try {
-      await signIn(email, password);
-      router.push("/");
+      const userCredential = await signUp(email, password);
+      if(userCredential) {
+        router.push("/");
+      }
     } catch (error: any) {
       setError(error.message);
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignUp = async () => {
     setError(null);
     try {
         const userCredential = await signInWithGoogle();
@@ -57,9 +59,9 @@ export default function SignInPage() {
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24 flex items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-headline">Sign In</CardTitle>
+          <CardTitle className="text-2xl font-headline">Buat Akun</CardTitle>
           <CardDescription>
-            Welcome back! Sign in to your account.
+            Bergabunglah dengan jaringan kami dan mulailah membuat perbedaan hari ini.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -70,16 +72,16 @@ export default function SignInPage() {
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
-            <Button variant="outline" className="w-full" onClick={handleGoogleSignIn}>
+            <Button variant="outline" className="w-full" onClick={handleGoogleSignUp}>
                 <GoogleIcon className="mr-2" />
-                Continue with Google
+                Lanjutkan dengan Google
             </Button>
             <div className="my-4 flex items-center">
                 <Separator className="flex-1" />
-                <span className="mx-4 text-xs text-muted-foreground">OR</span>
+                <span className="mx-4 text-xs text-muted-foreground">ATAU</span>
                 <Separator className="flex-1" />
             </div>
-          <form onSubmit={handleEmailSignIn} className="space-y-4">
+          <form onSubmit={handleEmailSignUp} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input 
@@ -91,7 +93,7 @@ export default function SignInPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Kata Sandi</Label>
               <Input 
                 id="password" 
                 type="password" 
@@ -101,13 +103,13 @@ export default function SignInPage() {
               />
             </div>
             <Button type="submit" className="w-full">
-              Sign In with Email
+              Buat Akun dengan Email
             </Button>
           </form>
           <div className="mt-4 text-center text-sm text-muted-foreground">
-            Don't have an account?{" "}
-            <Link href="/signup" className="underline">
-              Sign up
+            Sudah punya akun?{" "}
+            <Link href="/signin" className="underline">
+              Masuk
             </Link>
           </div>
         </CardContent>

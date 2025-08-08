@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useActionState } from "react";
@@ -22,7 +21,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <Button type="submit" disabled={pending} className="w-full">
-      {pending ? "Generating..." : "Generate Narrative"}
+      {pending ? "Menghasilkan..." : "Hasilkan Narasi"}
       <Sparkles className="ml-2 h-4 w-4" />
     </Button>
   );
@@ -36,34 +35,34 @@ export function DonationImpactForm() {
       <CardHeader>
         <CardTitle className="font-headline text-2xl flex items-center gap-2">
           <Sparkles className="w-6 h-6 text-accent" />
-          Generate Donation Impact
+          Hasilkan Dampak Donasi
         </CardTitle>
         <CardDescription>
-          See how our AI can craft compelling narratives to show donors the real-world impact of their contributions.
+          Lihat bagaimana AI kami dapat membuat narasi yang menarik untuk menunjukkan kepada para donatur dampak nyata dari kontribusi mereka.
         </CardDescription>
       </CardHeader>
       <form action={formAction}>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="projectName">Project Name</Label>
-              <Input id="projectName" name="projectName" defaultValue="Clean Water Initiative" />
+              <Label htmlFor="projectName">Nama Proyek</Label>
+              <Input id="projectName" name="projectName" defaultValue="Inisiatif Air Bersih" />
               {state.errors?.projectName && <p className="text-sm font-medium text-destructive">{state.errors.projectName[0]}</p>}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="donationAmount">Donation Amount ($)</Label>
+              <Label htmlFor="donationAmount">Jumlah Donasi ($)</Label>
               <Input id="donationAmount" name="donationAmount" type="number" defaultValue="50" />
               {state.errors?.donationAmount && <p className="text-sm font-medium text-destructive">{state.errors.donationAmount[0]}</p>}
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="projectGoal">Project Goal</Label>
-            <Textarea id="projectGoal" name="projectGoal" defaultValue="To build and maintain 10 new wells in rural communities, providing clean and accessible drinking water to over 5,000 people." />
+            <Label htmlFor="projectGoal">Tujuan Proyek</Label>
+            <Textarea id="projectGoal" name="projectGoal" defaultValue="Membangun dan memelihara 10 sumur baru di komunitas pedesaan, menyediakan air minum bersih dan dapat diakses oleh lebih dari 5.000 orang." />
             {state.errors?.projectGoal && <p className="text-sm font-medium text-destructive">{state.errors.projectGoal[0]}</p>}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="impactPerDollar">Impact Per Dollar</Label>
-            <Input id="impactPerDollar" name="impactPerDollar" defaultValue="Provides one person with clean water for a year." />
+            <Label htmlFor="impactPerDollar">Dampak per Dolar</Label>
+            <Input id="impactPerDollar" name="impactPerDollar" defaultValue="Menyediakan air bersih bagi satu orang selama setahun." />
             {state.errors?.impactPerDollar && <p className="text-sm font-medium text-destructive">{state.errors.impactPerDollar[0]}</p>}
           </div>
         </CardContent>
@@ -71,7 +70,7 @@ export function DonationImpactForm() {
           <SubmitButton />
           {state.success && state.narrative && (
             <div className="mt-4 w-full rounded-lg border bg-secondary/30 p-4 animate-in fade-in-50">
-              <h4 className="font-semibold mb-2">Generated Narrative:</h4>
+              <h4 className="font-semibold mb-2">Narasi yang Dihasilkan:</h4>
               <p className="text-sm text-secondary-foreground">{state.narrative}</p>
             </div>
           )}

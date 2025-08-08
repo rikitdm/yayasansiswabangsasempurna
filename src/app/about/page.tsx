@@ -1,4 +1,3 @@
-
 import { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -6,33 +5,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Us | Yayasan Siswa Bangsa Sempurna",
-  description: "We're on a mission to close the need gap and open opportunity for all. Learn about our mission, our story, and how you can make a difference.",
+  title: "Tentang Kami | Yayasan Siswa Bangsa Sempurna",
+  description: "Kami memiliki misi untuk menutup kesenjangan kebutuhan dan membuka kesempatan untuk semua. Pelajari tentang misi kami, kisah kami, dan bagaimana Anda dapat membuat perbedaan.",
 };
 
 const differenceCards = [
     {
-        title: "Become a Supporter",
-        description: "Whether you make a one-time donation or become a monthly donor, your generous gift can make a direct impact for an individual or family in need.",
-        buttonText: "Learn More",
+        title: "Menjadi Pendukung",
+        description: "Baik Anda memberikan donasi satu kali atau menjadi donatur bulanan, donasi Anda yang murah hati dapat memberikan dampak langsung bagi individu atau keluarga yang membutuhkan.",
+        buttonText: "Pelajari Lebih Lanjut",
         href: "/give",
     },
     {
-        title: "Donate Goods",
-        description: "When disaster strikes, be ready to help. We can work with your team to ensure your goods are used at the right time during recovery efforts and don't end up going to waste.",
-        buttonText: "Learn More",
+        title: "Donasi Barang",
+        description: "Saat bencana melanda, bersiaplah untuk membantu. Kami dapat bekerja sama dengan tim Anda untuk memastikan barang-barang Anda digunakan pada waktu yang tepat selama upaya pemulihan dan tidak terbuang sia-sia.",
+        buttonText: "Pelajari Lebih Lanjut",
         href: "/give/goods",
     },
     {
-        title: "Join Our Team",
-        description: "Contribute to our mission by helping our team sort, pack, and ship donated goods. Interested in careers? Search open positions.",
-        buttonText: "Learn More",
+        title: "Bergabung dengan Tim Kami",
+        description: "Berkontribusi pada misi kami dengan membantu tim kami menyortir, mengemas, dan mengirimkan barang-barang yang disumbangkan. Tertarik dengan karier? Cari posisi yang terbuka.",
+        buttonText: "Pelajari Lebih Lanjut",
         href: "/help",
     },
     {
-        title: "Become a Member",
-        description: "By joining our nonprofit network, you can receive critically needed goods to help your community both pre-disaster and post-disaster.",
-        buttonText: "Learn More",
+        title: "Menjadi Anggota",
+        description: "Dengan bergabung dalam jaringan lembaga nonprofit kami, Anda dapat menerima barang-barang yang sangat dibutuhkan untuk membantu komunitas Anda sebelum dan sesudah bencana.",
+        buttonText: "Pelajari Lebih Lanjut",
         href: "/signup",
     },
 ];
@@ -74,19 +73,19 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">
-              WE'RE ON A MISSION TO CLOSE THE NEED GAP
+              KAMI DALAM MISI UNTUK MENUTUP KESENJANGAN KEBUTUHAN
             </h1>
             <p className="text-lg text-muted-foreground">
-              In 1983, we set out on a journey to distribute product donations directly to people in need and, today, we're still going strong. Through lasting partnerships with our corporate donors and nonprofit network, we've proudly distributed more than $18 billion in goods to over 100 million people globally.
+              Pada tahun 1983, kami memulai perjalanan untuk mendistribusikan donasi produk langsung kepada orang-orang yang membutuhkan dan, hari ini, kami masih terus berjalan. Melalui kemitraan yang langgeng dengan para donatur korporat dan jaringan lembaga nonprofit kami, kami dengan bangga telah mendistribusikan lebih dari $18 miliar dalam bentuk barang kepada lebih dari 100 juta orang di seluruh dunia.
             </p>
             <p className="text-lg text-muted-foreground">
-              Amid the urgency of extreme weather events, persistent poverty, and urgent crises, we continue to close the need gap and open opportunity: for donors and nonprofits to better serve their communities, for communities to become more resilient, and for us all to create a more sustainable world.
+              Di tengah urgensi peristiwa cuaca ekstrem, kemiskinan yang terus-menerus, dan krisis yang mendesak, kami terus menutup kesenjangan kebutuhan dan membuka peluang: bagi para donatur dan lembaga nonprofit untuk melayani komunitas mereka dengan lebih baik, bagi komunitas untuk menjadi lebih tangguh, dan bagi kita semua untuk menciptakan dunia yang lebih berkelanjutan.
             </p>
           </div>
           <div>
             <Image
               src={heroImage}
-              alt="Our team working"
+              alt="Tim kami sedang bekerja"
               width={600}
               height={400}
               className="rounded-lg shadow-lg"
@@ -97,22 +96,22 @@ export default function AboutPage() {
 
         {/* Our Mission Section */}
         <div className="py-12 md:py-24 max-w-4xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Our Mission</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Misi Kami</h2>
             <p className="text-xl font-semibold text-primary">
-                Our mission is to close the need gap to open opportunity for all.
+                Misi kami adalah menutup kesenjangan kebutuhan untuk membuka kesempatan bagi semua.
             </p>
             <p className="text-muted-foreground">
-                We live in a world of plenty, yet millions of people find themselves in critical need every day, creating a vast need gap. We are on a mission to close that gap. We know there's more than enough to go around. That's why we work to get donated goods to where they can do the most good, to close the need gap.
+                Kita hidup di dunia yang serba berkecukupan, namun jutaan orang berada dalam kebutuhan kritis setiap hari, menciptakan kesenjangan kebutuhan yang luas. Kami dalam misi untuk menutup kesenjangan itu. Kami tahu ada lebih dari cukup untuk semua. Itulah mengapa kami bekerja untuk menyalurkan barang-barang donasi ke tempat yang paling membutuhkannya, untuk menutup kesenjangan kebutuhan.
             </p>
              <p className="text-muted-foreground">
-               When we close the gap, we open opportunity: for donors and nonprofits to better serve their communities, for communities to become more resilient and for us all to create less waste. But most of all, we help people to reach their boundless potential.
+               Ketika kita menutup kesenjangan, kita membuka peluang: bagi para donatur dan lembaga nonprofit untuk melayani komunitas mereka dengan lebih baik, bagi komunitas untuk menjadi lebih tangguh dan bagi kita semua untuk mengurangi limbah. Tetapi yang terpenting, kami membantu orang-orang untuk mencapai potensi mereka yang tak terbatas.
             </p>
         </div>
 
         {/* Our Team Section */}
         <div className="py-12 md:py-16">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Our Team</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Tim Kami</h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {teamMembers.map((member) => (
@@ -139,7 +138,7 @@ export default function AboutPage() {
         {/* Make a Difference Section */}
         <div className="py-12 md:py-16">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Make a Difference</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Buat Perbedaan</h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {differenceCards.map((card) => (

@@ -1,9 +1,8 @@
-
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Mountain } from "lucide-react";
 import type { SVGProps } from "react";
+import Image from "next/image";
 
 export function Footer() {
   const socialLinks = [
@@ -15,26 +14,26 @@ export function Footer() {
 
   const footerLinks = [
     {
-      title: "About",
+      title: "Tentang",
       links: [
-        { label: "Our Mission", href: "/about" },
-        { label: "Team", href: "/about" },
-        { label: "Careers", href: "/about" },
+        { label: "Misi Kami", href: "/about" },
+        { label: "Tim", href: "/about" },
+        { label: "Karier", href: "/about" },
       ],
     },
     {
-      title: "Support",
+      title: "Dukungan",
       links: [
-        { label: "Help Center", href: "/help" },
-        { label: "Contact Us", href: "/help" },
-        { label: "FAQs", href: "/help" },
+        { label: "Pusat Bantuan", href: "/help" },
+        { label: "Hubungi Kami", href: "/help" },
+        { label: "FAQ", href: "/help" },
       ],
     },
     {
-      title: "Legal",
+      title: "Hukum",
       links: [
-        { label: "Privacy Policy", href: "/privacy" },
-        { label: "Terms of Service", href: "/terms" },
+        { label: "Kebijakan Privasi", href: "/privacy" },
+        { label: "Ketentuan Layanan", href: "/terms" },
       ],
     },
   ];
@@ -44,13 +43,13 @@ export function Footer() {
       <div className="container mx-auto grid grid-cols-1 gap-8 px-4 py-12 md:grid-cols-2 md:px-6 lg:grid-cols-4">
         <div className="flex flex-col items-start gap-4">
           <Link href="/" className="flex items-center gap-2" prefetch={false}>
-            <Mountain className="h-8 w-8 text-primary" />
+            <Image src="https://firebasestorage.googleapis.com/v0/b/yayasan-siswa-bangsa-sem-9uim7.appspot.com/o/Icon%2FLogo_ysbs-removebg-preview.png?alt=media&token=897c6252-2530-4970-b496-2204155192b4" alt="logo" width={40} height={40} />
             <span className="text-2xl font-bold text-primary font-headline">
               Yayasan Siswa Bangsa Sempurna
             </span>
           </Link>
           <p className="text-sm text-muted-foreground">
-            Connecting generosity with need across the globe.
+            Menghubungkan kedermawanan dengan kebutuhan di seluruh dunia.
           </p>
           <div className="flex gap-4">
             {socialLinks.map((social) => (
@@ -82,24 +81,24 @@ export function Footer() {
           </div>
         ))}
         <div className="grid gap-2">
-          <h4 className="font-semibold font-headline">Stay Connected</h4>
+          <h4 className="font-semibold font-headline">Tetap Terhubung</h4>
           <p className="text-sm text-muted-foreground">
-            Sign up for our newsletter to get the latest news and updates.
+            Daftar buletin kami untuk mendapatkan berita dan pembaruan terbaru.
           </p>
           <form className="flex gap-2">
             <Input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Masukkan email Anda"
               className="flex-1"
             />
-            <Button type="submit" variant="default">Subscribe</Button>
+            <Button type="submit" variant="default">Berlangganan</Button>
           </form>
         </div>
       </div>
       <div className="border-t">
         <div className="container mx-auto flex items-center justify-between px-4 py-4 md:px-6">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Yayasan Siswa Bangsa Sempurna. All rights reserved.
+            © {new Date().getFullYear()} Yayasan Siswa Bangsa Sempurna. Hak cipta dilindungi undang-undang.
           </p>
         </div>
       </div>

@@ -1,71 +1,70 @@
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Yayasan Siswa Bangsa Sempurna",
-  description: "Read our privacy policy to understand how we handle your data.",
+  title: "Kebijakan Privasi | Yayasan Siswa Bangsa Sempurna",
+  description: "Baca kebijakan privasi kami untuk memahami bagaimana kami menangani data Anda.",
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6 lg:py-24 max-w-4xl">
       <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline mb-8 text-primary">
-        Privacy Policy
+        Kebijakan Privasi
       </h1>
       <div className="prose prose-lg max-w-none text-muted-foreground">
-        <p>Last updated: {new Date().toLocaleDateString()}</p>
+        <p>Terakhir diperbarui: {new Date().toLocaleDateString()}</p>
         <p>
-          Yayasan Siswa Bangsa Sempurna (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;) operates the
-          website (the &quot;Service&quot;). This page informs you of our policies
-          regarding the collection, use, and disclosure of personal data when you
-          use our Service and the choices you have associated with that data.
+          Yayasan Siswa Bangsa Sempurna ("kami", "milik kami", atau "kita") mengoperasikan
+          situs web ("Layanan"). Halaman ini memberitahu Anda tentang kebijakan kami
+          mengenai pengumpulan, penggunaan, dan pengungkapan data pribadi saat Anda
+          menggunakan Layanan kami dan pilihan yang Anda miliki terkait data tersebut.
         </p>
 
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Information Collection and Use</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Pengumpulan dan Penggunaan Informasi</h2>
         <p>
-          We collect several different types of information for various purposes
-          to provide and improve our Service to you.
+          Kami mengumpulkan beberapa jenis informasi yang berbeda untuk berbagai tujuan
+          untuk menyediakan dan meningkatkan Layanan kami kepada Anda.
         </p>
 
-        <h3 className="text-xl font-bold font-headline mt-6 mb-3 text-primary">Types of Data Collected</h3>
-        <h4>Personal Data</h4>
+        <h3 className="text-xl font-bold font-headline mt-6 mb-3 text-primary">Jenis Data yang Dikumpulkan</h3>
+        <h4>Data Pribadi</h4>
         <p>
-          While using our Service, we may ask you to provide us with certain
-          personally identifiable information that can be used to contact or
-          identify you (&quot;Personal Data&quot;). Personally identifiable information
-          may include, but is not limited to:
+          Saat menggunakan Layanan kami, kami mungkin meminta Anda untuk memberikan kami informasi
+          tertentu yang dapat diidentifikasi secara pribadi yang dapat digunakan untuk menghubungi atau
+          mengidentifikasi Anda ("Data Pribadi"). Informasi yang dapat diidentifikasi secara pribadi
+          dapat mencakup, namun tidak terbatas pada:
         </p>
         <ul>
-          <li>Email address</li>
-          <li>First name and last name</li>
-          <li>Phone number</li>
-          <li>Address, State, Province, ZIP/Postal code, City</li>
-          <li>Cookies and Usage Data</li>
+          <li>Alamat email</li>
+          <li>Nama depan dan nama belakang</li>
+          <li>Nomor telepon</li>
+          <li>Alamat, Negara Bagian, Provinsi, Kode Pos, Kota</li>
+          <li>Cookie dan Data Penggunaan</li>
         </ul>
 
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Use of Data</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Penggunaan Data</h2>
         <p>
-          Yayasan Siswa Bangsa Sempurna uses the collected data for various purposes:
+          Yayasan Siswa Bangsa Sempurna menggunakan data yang dikumpulkan untuk berbagai tujuan:
         </p>
         <ul>
-          <li>To provide and maintain the Service</li>
-          <li>To notify you about changes to our Service</li>
+          <li>Untuk menyediakan dan memelihara Layanan</li>
+          <li>Untuk memberitahu Anda tentang perubahan pada Layanan kami</li>
           <li>
-            To allow you to participate in interactive features of our Service
-            when you choose to do so
+            Untuk memungkinkan Anda berpartisipasi dalam fitur interaktif Layanan kami
+            saat Anda memilih untuk melakukannya
           </li>
-          <li>To provide customer care and support</li>
+          <li>Untuk menyediakan layanan dan dukungan pelanggan</li>
           <li>
-            To provide analysis or valuable information so that we can improve
-            the Service
+            Untuk memberikan analisis atau informasi berharga sehingga kami dapat meningkatkan
+            Layanan
           </li>
-          <li>To monitor the usage of the Service</li>
-          <li>To detect, prevent and address technical issues</li>
+          <li>Untuk memantau penggunaan Layanan</li>
+          <li>Untuk mendeteksi, mencegah, dan mengatasi masalah teknis</li>
         </ul>
         
-        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Contact Us</h2>
+        <h2 className="text-2xl font-bold font-headline mt-8 mb-4 text-primary">Hubungi Kami</h2>
         <p>
-            If you have any questions about this Privacy Policy, please contact us through the form on our Help page.
+            Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami melalui formulir di halaman Bantuan kami.
         </p>
       </div>
     </div>

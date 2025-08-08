@@ -51,8 +51,8 @@ export default async function ArticlePage({ params }: Props) {
 
         <p className="text-xl text-muted-foreground font-semibold mb-8">{article.description}</p>
         <Image
-          src={article.imageSrc}
-          alt={article.title}
+          src={article.imageSrc || "https://placehold.co/800x450.png"}
+          alt={article.title || "Article image"}
           width={800}
           height={450}
           className="w-full aspect-video object-cover rounded-lg shadow-lg mb-8"

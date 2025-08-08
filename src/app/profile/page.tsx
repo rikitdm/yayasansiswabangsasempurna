@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect } from "react";
@@ -10,28 +9,28 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// Placeholder data - you would fetch this from your database
+// Data placeholder - Anda akan mengambil ini dari database Anda
 const donationHistory = [
   {
     id: "don_1",
     date: "2024-07-15",
     amount: 50.0,
-    project: "School Supplies for Kids",
-    status: "Completed",
+    project: "Perlengkapan Sekolah untuk Anak-Anak",
+    status: "Selesai",
   },
   {
     id: "don_2",
     date: "2024-06-20",
     amount: 100.0,
-    project: "Disaster Relief: Hurricane Ian",
-    status: "Completed",
+    project: "Bantuan Bencana: Badai Ian",
+    status: "Selesai",
   },
   {
     id: "don_3",
     date: "2024-05-01",
     amount: 25.0,
-    project: "Community Health Clinics",
-    status: "Completed",
+    project: "Klinik Kesehatan Masyarakat",
+    status: "Selesai",
   },
 ];
 
@@ -104,23 +103,23 @@ export default function ProfilePage() {
           </Avatar>
           <div>
             <h1 className="text-3xl font-bold font-headline">
-              {user.displayName || "Welcome!"}
+              {user.displayName || "Selamat Datang!"}
             </h1>
             <p className="text-muted-foreground">{user.email}</p>
           </div>
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold font-headline mb-4">My Donations</h2>
+          <h2 className="text-2xl font-bold font-headline mb-4">Donasi Saya</h2>
           <Card>
             <CardContent className="p-0">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Project</TableHead>
+                    <TableHead>Tanggal</TableHead>
+                    <TableHead>Proyek</TableHead>
                     <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
+                    <TableHead className="text-right">Jumlah</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
